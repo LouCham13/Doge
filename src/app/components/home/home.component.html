@@ -1,0 +1,36 @@
+<div>
+  <h2>Métriques du marché des cryptomonnaies</h2>
+
+  <div *ngIf="cours && cours.length > 0">
+    <div *ngFor="let coursItem of cours">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ coursItem.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Prix actuel : {{ coursItem.priceUsd }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div *ngIf="!cours || cours.length === 0">
+    <mat-card>
+      <mat-card-content>
+        <p>Aucune donnée disponible pour le moment.</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div>
+  <div *ngIf="bestExchanges">
+    <mat-card>
+      <mat-card-content>
+        <h3>Meilleure plateforme d'échange en termes de volume des dernières 24 heures :</h3>
+        <p>{{ bestExchanges }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
