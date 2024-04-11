@@ -8,20 +8,20 @@ import {Exchanges} from '../../model/Exchanges';
 })
 export class CoincapService {
 
-  private readonly _url = CoincapService + 'api.coincap.io/v2';
+  private readonly url = 'https://api.coincap.io/v2';
 
-  constructor(private _http: HttpClient) {
+  constructor(private http: HttpClient) {
   }
-  getCoursId(id: string): Observable<HttpResponse<Cours>> {
-    return this._http.get<any>(this._url + '/assets/' + id, {observe: 'response'});
-  }
-
-  getCours(): Observable<HttpResponse<Cours[]>> {
-    return this._http.get<any>(this._url + '/assets/' , {observe: 'response'});
+  public getCoursId(id: string): Observable<HttpResponse<Cours>> {
+    return this.http.get<Cours>(this.url + '/assets/' + id, {observe: 'response'});
   }
 
-  getexchanges(): Observable<HttpResponse<Exchanges[]>> {
-    return this._http.get<any>(this._url + '/exchanges/', {observe: 'response'});
+  public getCours(): Observable<HttpResponse<Cours[]>> {
+    return this.http.get<Cours[]>(this.url + '/assets/' , {observe: 'response'});
+  }
+
+  public getExchanges(): Observable<HttpResponse<Exchanges[]>> {
+    return this.http.get<Exchanges[]>(this.url + '/exchanges/', {observe: 'response'});
   }
 
 }

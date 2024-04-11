@@ -16,8 +16,9 @@ export class BuyTicketComponent implements OnInit {
   prixDoge: number;
   cours: Cours[];
   cour: Cours;
-  coursLoading: Boolean = true;
-
+  coursLoading: boolean = true;
+  prixTotal: number;
+  prixReduit: number;
   constructor(
     private coincapService: CoincapService,
   ) { }
@@ -27,20 +28,14 @@ export class BuyTicketComponent implements OnInit {
   }
 
   buyTickets(): void {
-    const prixTotal = this.numberTickets * this.prixTicket;
-    let prixReduit = prixTotal;
+     this.prixTotal = this.numberTickets * this.prixTicket;
+     this.prixReduit = this.prixTotal;
 
-    if (this.numberTickets >= 2) {
-      prixReduit = prixTotal - (prixTotal * this.reduction);
+     if (this.numberTickets >= 2) {
+      this.prixReduit = this.prixTotal - (this.prixTotal * this.reduction);
     }
 
-    this.prixDoge = prixTotal * this.cour.priceUsd;
-
-    this.messageBuy = `Vous avez acheté ${this.numberTickets} ticket(s) pour un prix total de $${prixTotal.toFixed(2)}
-    soit ${this.prixDoge} Doge`;
-    if (this.numberTickets >= 2) {
-      this.messageBuy += `(avec une réduction de ${this.reduction * 100}%, prix réduit : $${prixReduit.toFixed(2)})`;
-    }
+     this.prixDoge = this.prixTotal * this.cour['data'].priceUsd;
   }
 
   private getCours(id: string): void {

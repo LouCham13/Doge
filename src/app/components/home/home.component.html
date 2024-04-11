@@ -1,14 +1,40 @@
 <div>
   <h2>Métriques du marché des cryptomonnaies</h2>
 
-  <div *ngIf="cours && cours.length > 0">
-    <div *ngFor="let coursItem of cours">
+  <div>
+    <div *ngIf="this.cours['data'][0].name === 'Bitcoin'">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>{{ coursItem.name }}</mat-card-title>
+          <mat-card-title>{{ cours['data'][0].name }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <p>Prix actuel : {{ coursItem.priceUsd }}</p>
+          <h2>Prix actuel : {{ cours['data'][0].priceUsd | number:'1.2-2'}} $</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="this.cours['data'][1].name === 'Ethereum'">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ cours['data'][1].name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>Prix actuel : {{ cours['data'][1].priceUsd | number:'1.2-2' }} $</h2>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div>
+    <div *ngIf="this.cours['data'][7].name === 'Dogecoin'">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ cours['data'][7].name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h2>Prix actuel : {{ cours['data'][7].priceUsd | number:'1.2-2' }} $</h2>
         </mat-card-content>
       </mat-card>
     </div>
@@ -23,14 +49,16 @@
   </div>
 </div>
 
+<div *ngIf="Exchanges">
+  <mat-card>
+    <mat-card-content>
+      <h3>Meilleure plateforme d'échange en termes de volume des dernières 24 heures :</h3>
+      <h2>{{ Exchanges['data'][0].name}}</h2>
+    </mat-card-content>
+  </mat-card>
+</div>
+
 <div>
-  <div *ngIf="bestExchanges">
-    <mat-card>
-      <mat-card-content>
-        <h3>Meilleure plateforme d'échange en termes de volume des dernières 24 heures :</h3>
-        <p>{{ bestExchanges }}</p>
-      </mat-card-content>
-    </mat-card>
-  </div>
+  <button  mat-raised-button color="primary" [routerLink]="['/buy-ticket']">Acheter des Tickets</button>
 </div>
 

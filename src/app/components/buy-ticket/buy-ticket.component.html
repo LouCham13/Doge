@@ -7,9 +7,16 @@
   </mat-form-field>
 
   <button mat-raised-button color="primary" (click)="buyTickets()">Acheter</button>
+  <br>
+  <button mat-raised-button color="primary" [routerLink]="['/home']">retour</button>
 
-  <div *ngIf="messageBuy">
-    <p>{{ messageBuy }}</p>
+  <div>
+    <h2>Vous avez acheté {{numberTickets}} ticket(s) pour un prix total de {{this.prixTotal}} $
+      soit {{ this.prixDoge | number:'1.2-2'}} DogeCoin
+    </h2>
+    <h2 *ngIf="this.numberTickets >= 2">
+       avec une réduction de {{this.reduction * 100}}% , Le prix réduit est de : {{ prixReduit | number:'1.2-2'}} $
+    </h2>
   </div>
 </div>
 
