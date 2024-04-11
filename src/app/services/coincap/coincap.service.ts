@@ -10,7 +10,7 @@ export class CoincapService {
 
   private readonly url = 'https://api.coincap.io/v2';
 
-  constructor(private http: HttpClient) {
+  constructor(readonly http: HttpClient) {
   }
   public getCoursId(id: string): Observable<HttpResponse<Cours>> {
     return this.http.get<Cours>(this.url + '/assets/' + id, {observe: 'response'});

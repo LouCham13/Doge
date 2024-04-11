@@ -1,0 +1,31 @@
+.crypto-market {
+  text-align: center;
+}
+
+.crypto-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.crypto-card {
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.crypto-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.no-data-card {
+  width: 300px;
+}
+
+.exchange-card {
+  margin-top: 20px;
+}
+
+.buy-ticket-button {
+  margin-top: 20px;
+}

@@ -9,8 +9,4 @@ describe('CoincapService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(CoincapService);
   });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });

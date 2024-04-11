@@ -9,14 +9,14 @@ import {Cours} from '../../model/Cours';
 })
 export class BuyTicketComponent implements OnInit {
 
-  numberTickets: number = 1;
-  prixTicket: number = 4;
-  reduction: number = 0.05;
-  messageBuy: string = '';
+  numberTickets = 1;
+  prixTicket = 4;
+  reduction = 0.05;
+  messageBuy = '';
   prixDoge: number;
   cours: Cours[];
   cour: Cours;
-  coursLoading: boolean = true;
+  coursLoading = true;
   prixTotal: number;
   prixReduit: number;
   constructor(
