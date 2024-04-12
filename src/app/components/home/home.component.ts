@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   public cours: Cours[];
   public cour: Cours;
-  private coursLoading: boolean = true;
+  private coursLoading = true;
   public Exchanges: Exchanges[];
   public Exchange: Exchanges;
 

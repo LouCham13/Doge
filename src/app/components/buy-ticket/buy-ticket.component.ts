@@ -35,7 +35,10 @@ export class BuyTicketComponent implements OnInit {
       this.prixReduit = this.prixTotal - (this.prixTotal * this.reduction);
     }
 
-     this.prixDoge = this.prixTotal * this.cour['data'].priceUsd;
+     const tauxConversion = this.cour['data'].priceUsd;
+     const montantDoge = (this.prixTotal / tauxConversion);
+
+     this.prixDoge = montantDoge;
   }
 
   private getCours(id: string): void {
