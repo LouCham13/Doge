@@ -22,8 +22,15 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.updateCoursPeriodiquement();
     this.getCours();
     this.getExchanges();
+  }
+
+  updateCoursPeriodiquement(): void {
+    setInterval(() => {
+      this.getCours();
+    }, 10000);
   }
 
   private getCour(id: string): void {

@@ -1,31 +1,37 @@
-.crypto-market {
-  text-align: center;
+.crypto-dashboard {
+  margin: 20px;
 }
 
 .crypto-cards {
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
-}
-
-.crypto-card {
-  width: 300px;
+  justify-content: space-around;
   margin-bottom: 20px;
 }
 
+.crypto-card {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+}
+
+.crypto-card mat-card {
+  min-width: 200px;
+}
+
 .crypto-price {
+  margin-top: 10px;
   font-size: 18px;
-  font-weight: bold;
 }
 
 .no-data-card {
-  width: 300px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .exchange-card {
   margin-top: 20px;
 }
 
-.buy-ticket-button {
-  margin-top: 20px;
+.button-container {
+  text-align: center;
 }

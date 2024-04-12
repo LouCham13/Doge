@@ -1,43 +1,19 @@
-<div class="crypto-market">
+<div class="crypto-dashboard">
   <h2>Métriques du marché des cryptomonnaies</h2>
 
   <div class="crypto-cards">
-    <div *ngIf="this.cours['data'][0].name === 'Bitcoin'">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ cours['data'][0].name }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <h2 class="crypto-price">Prix actuel : {{ cours['data'][0].priceUsd | number:'1.2-2'}} $</h2>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-
-  <div class="crypto-cards">
-    <div *ngIf="this.cours['data'][1].name === 'Ethereum'">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ cours['data'][1].name }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <h2 class="crypto-price">Prix actuel : {{ cours['data'][1].priceUsd | number:'1.2-2' }} $</h2>
-        </mat-card-content>
-      </mat-card>
-    </div>
-  </div>
-
-  <div class="crypto-cards">
-    <div *ngIf="this.cours['data'][6].name === 'Dogecoin'">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ cours['data'][6].name }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <h2 class="crypto-price">Prix actuel : {{ cours['data'][6].priceUsd | number:'1.2-2' }} $</h2>
-        </mat-card-content>
-      </mat-card>
-    </div>
+    <ng-container *ngFor="let crypto of cours['data']">
+      <div class="crypto-card" *ngIf="crypto.name === 'Bitcoin' || crypto.name === 'Ethereum' || crypto.name === 'Dogecoin'">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ crypto.name }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <h2 class="crypto-price">Prix actuel : {{ crypto.priceUsd | number:'1.2-2'}} $</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </ng-container>
   </div>
 
   <div *ngIf="!cours || cours.length === 0">
@@ -47,18 +23,18 @@
       </mat-card-content>
     </mat-card>
   </div>
-</div>
 
-<div *ngIf="Exchanges" class="exchange-card">
-  <mat-card>
-    <mat-card-content>
-      <h3>Meilleure plateforme d'échange en termes de volume des dernières 24 heures :</h3>
-      <h2>{{ Exchanges['data'][0].name}}</h2>
-    </mat-card-content>
-  </mat-card>
+  <div *ngIf="Exchanges" class="exchange-card">
+    <mat-card>
+      <mat-card-content>
+        <h3>Meilleure plateforme d'échange en termes de volume des dernières 24 heures :</h3>
+        <h2>{{ Exchanges['data'][0].name}}</h2>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <br>
+  <br>
+  <div class="button-container">
+    <button mat-raised-button color="primary" [routerLink]="['/buy-ticket']">Acheter des Tickets</button>
+  </div>
 </div>
-
-<div>
-  <button  mat-raised-button color="primary" [routerLink]="['/buy-ticket']">Acheter des Tickets</button>
-</div>
-
